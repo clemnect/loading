@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Le Comité - Chargement</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: #000;
+      font-family: sans-serif;
+    }
+
+    /* Fond style "cinéma" */
+    .frame {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1280px;
+      height: 720px;
+      max-width: 100%;
+      max-height: 100%;
+      transform: translate(-50%, -50%);
+      background: url("https://i.imgur.com/bRL3qKx.png") center center no-repeat;
+      background-size: contain;
+      box-shadow: 0 0 80px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255,255,255,0.05) inset;
+      border: 2px solid rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      animation: swing 4s ease-in-out infinite; /* Animation ajoutée avec un mouvement lent */
+    }
+
+    /* Animation de mouvement de gauche à droite */
+    @keyframes swing {
+      0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg); /* Position de départ */
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate(2deg); /* Légère inclinaison à droite */
+      }
+    }
+
+    /* Barre de chargement en bas */
+    #loader {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    #loader::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: white;
+      animation: load 10s infinite ease-in-out; /* Animation plus lente */
+    }
+
+    @keyframes load {
+      0% { width: 0%; }
+      50% { width: 100%; }
+      100% { width: 0%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame"></div>
+  <div id="loader"></div>
+</body>
+</html>
